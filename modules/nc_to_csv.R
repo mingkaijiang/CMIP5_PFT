@@ -3,7 +3,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
     
     # prepare file names
     inFile <- paste0(sourceDir, "/", Datfile, ".nc")
-
+    dir.create(destDir, showWarnings = FALSE)
+    
     # process file
     ncDF <- nc_open(inFile) 
     
@@ -23,9 +24,13 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
     nlat <- dim(lat)
     #head(lat)
     
-    for (i in 1:d[3]) {
-        outFile <- paste0(destDir, "/", Datfile, "_", i, ".csv")
-    }
+    lon.s <- min(lon)
+    lon.e <- max(lon)
+    lat.s <- min(lat)
+    lat.e <- max(lat)
+    lon.i <- abs(lon[1]-lon[2])
+    lat.i <- abs(lat[1]-lat[2])
+    
     
     nc_close(ncDF)
     
@@ -59,18 +64,22 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
     }
     
     for (j in 1:d[3]) {
+        
+        # prepare outfile name and directory
+        outFile <- paste0(destDir, "/", Datfile, "_", j, ".csv")
+        
         ##Jan list
         i <- 1
         
         sliceDF <- tmp.array[,,j,i]
         sliceDF <- t(sliceDF)
         
-        iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                  yrow = seq(-87.963799,87.863799,by=2.767272)) 
+        iDF <- im(sliceDF, xcol = lon, 
+                  yrow = lat) 
         
         janDF <- as.data.frame(iDF)
         
-        quilt.plot(janDF$x, janDF$y, janDF$value, nrow=128, ncol=62)
+        #quilt.plot(janDF$x, janDF$y, janDF$value, nrow=128, ncol=62)
         
         janDF[,"sequence"] <- 1
         janDF[,"CMIP_Site"] <- c(1:length(janDF$x))
@@ -80,8 +89,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
             sliceDF <- tmp.array[,,j,i]
             sliceDF <- t(sliceDF)
             
-            iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                      yrow = seq(-87.963799,87.863799,by=2.767272)) 
+            iDF <- im(sliceDF, xcol = lon, 
+                      yrow = lat) 
             
             mid <- as.data.frame(iDF)
             
@@ -99,8 +108,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         sliceDF <- tmp.array[,,j,i]
         sliceDF <- t(sliceDF)
         
-        iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                  yrow = seq(-87.963799,87.863799,by=2.767272)) 
+        iDF <- im(sliceDF, xcol = lon, 
+                  yrow = lat) 
         
         febDF <- as.data.frame(iDF)
         
@@ -112,8 +121,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
             sliceDF <- tmp.array[,,j,i]
             sliceDF <- t(sliceDF)
             
-            iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                      yrow = seq(-87.963799,87.863799,by=2.767272)) 
+            iDF <- im(sliceDF, xcol = lon, 
+                      yrow = lat) 
             
             mid <- as.data.frame(iDF)
             
@@ -129,8 +138,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         sliceDF <- tmp.array[,,j,i]
         sliceDF <- t(sliceDF)
         
-        iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                  yrow = seq(-87.963799,87.863799,by=2.767272)) 
+        iDF <- im(sliceDF, xcol = lon, 
+                  yrow = lat) 
         
         marDF <- as.data.frame(iDF)
         
@@ -142,8 +151,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
             sliceDF <- tmp.array[,,j,i]
             sliceDF <- t(sliceDF)
             
-            iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                      yrow = seq(-87.963799,87.863799,by=2.767272)) 
+            iDF <- im(sliceDF, xcol = lon, 
+                      yrow = lat) 
             
             mid <- as.data.frame(iDF)
             
@@ -160,8 +169,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         sliceDF <- tmp.array[,,j,i]
         sliceDF <- t(sliceDF)
         
-        iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                  yrow = seq(-87.963799,87.863799,by=2.767272)) 
+        iDF <- im(sliceDF, xcol = lon, 
+                  yrow = lat) 
         
         aprDF <- as.data.frame(iDF)
         
@@ -173,8 +182,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
             sliceDF <- tmp.array[,,j,i]
             sliceDF <- t(sliceDF)
             
-            iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                      yrow = seq(-87.963799,87.863799,by=2.767272)) 
+            iDF <- im(sliceDF, xcol = lon, 
+                      yrow = lat) 
             
             mid <- as.data.frame(iDF)
             
@@ -191,8 +200,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         sliceDF <- tmp.array[,,j,i]
         sliceDF <- t(sliceDF)
         
-        iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                  yrow = seq(-87.963799,87.863799,by=2.767272)) 
+        iDF <- im(sliceDF, xcol = lon, 
+                  yrow = lat) 
         
         mayDF <- as.data.frame(iDF)
         
@@ -204,8 +213,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
             sliceDF <- tmp.array[,,j,i]
             sliceDF <- t(sliceDF)
             
-            iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                      yrow = seq(-87.963799,87.863799,by=2.767272)) 
+            iDF <- im(sliceDF, xcol = lon, 
+                      yrow = lat) 
             
             mid <- as.data.frame(iDF)
             
@@ -222,8 +231,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         sliceDF <- tmp.array[,,j,i]
         sliceDF <- t(sliceDF)
         
-        iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                  yrow = seq(-87.963799,87.863799,by=2.767272)) 
+        iDF <- im(sliceDF, xcol = lon, 
+                  yrow = lat) 
         
         junDF <- as.data.frame(iDF)
         
@@ -235,8 +244,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
             sliceDF <- tmp.array[,,j,i]
             sliceDF <- t(sliceDF)
             
-            iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                      yrow = seq(-87.963799,87.863799,by=2.767272)) 
+            iDF <- im(sliceDF, xcol = lon, 
+                      yrow = lat) 
             
             mid <- as.data.frame(iDF)
             
@@ -253,8 +262,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         sliceDF <- tmp.array[,,j,i]
         sliceDF <- t(sliceDF)
         
-        iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                  yrow = seq(-87.963799,87.863799,by=2.767272)) 
+        iDF <- im(sliceDF, xcol = lon, 
+                  yrow = lat) 
         
         julDF <- as.data.frame(iDF)
         
@@ -266,8 +275,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
             sliceDF <- tmp.array[,,j,i]
             sliceDF <- t(sliceDF)
             
-            iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                      yrow = seq(-87.963799,87.863799,by=2.767272)) 
+            iDF <- im(sliceDF, xcol = lon, 
+                      yrow = lat) 
             
             mid <- as.data.frame(iDF)
             
@@ -284,8 +293,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         sliceDF <- tmp.array[,,j,i]
         sliceDF <- t(sliceDF)
         
-        iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                  yrow = seq(-87.963799,87.863799,by=2.767272)) 
+        iDF <- im(sliceDF, xcol = lon, 
+                  yrow = lat) 
         
         augDF <- as.data.frame(iDF)
         
@@ -297,8 +306,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
             sliceDF <- tmp.array[,,j,i]
             sliceDF <- t(sliceDF)
             
-            iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                      yrow = seq(-87.963799,87.863799,by=2.767272)) 
+            iDF <- im(sliceDF, xcol = lon, 
+                      yrow = lat) 
             
             mid <- as.data.frame(iDF)
             
@@ -315,8 +324,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         sliceDF <- tmp.array[,,j,i]
         sliceDF <- t(sliceDF)
         
-        iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                  yrow = seq(-87.963799,87.863799,by=2.767272)) 
+        iDF <- im(sliceDF, xcol = lon, 
+                  yrow = lat) 
         
         sepDF <- as.data.frame(iDF)
         
@@ -328,8 +337,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
             sliceDF <- tmp.array[,,j,i]
             sliceDF <- t(sliceDF)
             
-            iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                      yrow = seq(-87.963799,87.863799,by=2.767272)) 
+            iDF <- im(sliceDF, xcol = lon, 
+                      yrow = lat) 
             
             mid <- as.data.frame(iDF)
             
@@ -346,8 +355,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         sliceDF <- tmp.array[,,j,i]
         sliceDF <- t(sliceDF)
         
-        iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                  yrow = seq(-87.963799,87.863799,by=2.767272)) 
+        iDF <- im(sliceDF, xcol = lon, 
+                  yrow = lat) 
         
         octDF <- as.data.frame(iDF)
         
@@ -359,8 +368,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
             sliceDF <- tmp.array[,,j,i]
             sliceDF <- t(sliceDF)
             
-            iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                      yrow = seq(-87.963799,87.863799,by=2.767272)) 
+            iDF <- im(sliceDF, xcol = lon, 
+                      yrow = lat) 
             
             mid <- as.data.frame(iDF)
             
@@ -378,8 +387,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         sliceDF <- tmp.array[,,j,i]
         sliceDF <- t(sliceDF)
         
-        iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                  yrow = seq(-87.963799,87.863799,by=2.767272)) 
+        iDF <- im(sliceDF, xcol = lon, 
+                  yrow = lat) 
         
         novDF <- as.data.frame(iDF)
         
@@ -391,8 +400,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
             sliceDF <- tmp.array[,,j,i]
             sliceDF <- t(sliceDF)
             
-            iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                      yrow = seq(-87.963799,87.863799,by=2.767272)) 
+            iDF <- im(sliceDF, xcol = lon, 
+                      yrow = lat) 
             
             mid <- as.data.frame(iDF)
             
@@ -409,8 +418,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         sliceDF <- tmp.array[,,j,i]
         sliceDF <- t(sliceDF)
         
-        iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                  yrow = seq(-87.963799,87.863799,by=2.767272)) 
+        iDF <- im(sliceDF, xcol = lon, 
+                  yrow = lat) 
         
         decDF <- as.data.frame(iDF)
         
@@ -422,8 +431,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
             sliceDF <- tmp.array[,,j,i]
             sliceDF <- t(sliceDF)
             
-            iDF <- im(sliceDF, xcol = seq(0,357.1875, by=2.8125), 
-                      yrow = seq(-87.963799,87.863799,by=2.767272)) 
+            iDF <- im(sliceDF, xcol = lon, 
+                      yrow = lat) 
             
             mid <- as.data.frame(iDF)
             
@@ -451,11 +460,11 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         
         output[,"sequence"] <- janDF[,"sequence"]
         
-        jan.list <- append(1,jan.list)
+        jan.list2 <- append(1,jan.list)
         
-        for (i in 1:length(jan.list))
+        for (i in 1:length(jan.list2))
         {
-            output[output$sequence == jan.list[i], "sequence"] <- (i+2005)
+            output[output$sequence == jan.list2[i], "sequence"] <- (i+2005)
         }
         
         setnames(output, c("x","y","CMIP_Site","jan","feb","mar","apr","may","jun",
@@ -469,12 +478,15 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
         
         #output <- data.table(output)
         
-        # extract australia grids
-        out <- subset(output, lon <= 160 & lon >= 90 & lat <= -8 & lat >= -65)
+        # extract australia grids and year 2006-2100
+        out <- subset(output, year >= 2006 & year <= 2100 & lon <= 160 & lon >= 90 & lat <= -8 & lat >= -65)
         #quilt.plot(out$lon, out$lat, out$jan, nrow = 14, ncol=10)
         #world(add=T, col=adjustcolor("grey", 0.8))
         
-        write.csv(out, outFile[j], row.names = F)
+        # unlist output
+        rm(output)
+        
+        write.csv(out, outFile, row.names = F)
     }
     
 }
