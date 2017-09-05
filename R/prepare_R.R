@@ -14,11 +14,15 @@ pacman::p_load(scatterplot3d,
                grid,
                gridBase,
                ini,
-               ncdf4) # add other packages needed to this list
+               ncdf4,
+               maptools,
+               raster,
+               spatstat,
+               fields) # add other packages needed to this list
 
 
 #### Sourcing all R files in the function subdirectory
-sourcefiles <- dir("Functions", pattern="[.]R$", recursive = TRUE, full.names = TRUE)
+sourcefiles <- dir("modules", pattern="[.]R$", recursive = TRUE, full.names = TRUE)
 for(z in sourcefiles)source(z)
 
 
