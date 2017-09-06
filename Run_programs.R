@@ -37,10 +37,10 @@ nc_to_csv(Datfile = "landCoverFrac_Lmon_MPI-ESM-MR_rcp26_r1i1p1_200601-210012",
 
 
 # RCP 45
-nc_to_csv(Datfile = "landCoverFrac_Lmon_ACCESS1-0_rcp45_r1i1p1_200601-200601", 
+nc_to_csv_ACCESS(Datfile = "landCoverFrac_Lmon_ACCESS1-0_rcp45_r1i1p1_200601-200601", 
           sourceDir = "Data/Raw", destDir = "Data/Processed/ACCESS1-0_rcp45")
 
-nc_to_csv(Datfile = "landCoverFrac_Lmon_ACCESS1-3_rcp45_r1i1p1_200601-200601", 
+nc_to_csv_ACCESS(Datfile = "landCoverFrac_Lmon_ACCESS1-3_rcp45_r1i1p1_200601-200601", 
           sourceDir = "Data/Raw", destDir = "Data/Processed/ACCESS1-3_rcp45")
 
 nc_to_csv(Datfile = "landCoverFrac_Lmon_IPSL-CM5A-LR_rcp45_r1i1p1_200601-230012", 
@@ -79,10 +79,10 @@ nc_to_csv(Datfile = "landCoverFrac_Lmon_MIROC-ESM-CHEM_rcp60_r1i1p1_200601-21001
 
 
 # RCP 85
-nc_to_csv(Datfile = "landCoverFrac_Lmon_ACCESS1-0_rcp85_r1i1p1_200601-200601", 
+nc_to_csv_ACCESS(Datfile = "landCoverFrac_Lmon_ACCESS1-0_rcp85_r1i1p1_200601-200601", 
           sourceDir = "Data/Raw", destDir = "Data/Processed/ACCESS1-0_rcp85")
 
-nc_to_csv(Datfile = "landCoverFrac_Lmon_ACCESS1-3_rcp85_r1i1p1_200601-200601", 
+nc_to_csv_ACCESS(Datfile = "landCoverFrac_Lmon_ACCESS1-3_rcp85_r1i1p1_200601-200601", 
           sourceDir = "Data/Raw", destDir = "Data/Processed/ACCESS1-3_rcp85")
 
 nc_to_csv(Datfile = "landCoverFrac_Lmon_IPSL-CM5A-LR_rcp85_r1i1p1_200601-230012", 
