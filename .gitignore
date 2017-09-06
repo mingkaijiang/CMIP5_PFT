@@ -74,4 +74,35 @@ vignettes/*.pdf
 
 
 # Plots
-/Plots/*.tiff
+/Plots/Discret/MIROC-ESM_rcp26/*.pdf
+/Plots/Discret/IPSL-CM5A-LR_rcp26/*.pdf
+/Plots/Discret/IPSL-CM5A-MR_rcp26/*.pdf
+/Plots/Discret/MIROC-ESM-CHEM_rcp26/*.pdf
+/Plots/Discret/MPI-ESM-LR_rcp26/*.pdf
+/Plots/Discret/MPI-ESM-MR_rcp26/*.pdf
+
+/Plots/Discret/ACCESS1-0_rcp45/*.pdf
+/Plots/Discret/ACCESS1-3_rcp45/*.pdf
+/Plots/Discret/IPSL-CM5A-LR_rcp45/*.pdf
+/Plots/Discret/IPSL-CM5A-MR_rcp45/*.pdf
+/Plots/Discret/IPSL-CM5B-LR_rcp45/*.pdf
+/Plots/Discret/MIROC-ESM_rcp45/*.pdf
+/Plots/Discret/MIROC-ESM-CHEM_rcp45/*.pdf
+/Plots/Discret/MPI-ESM-LR_rcp45/*.pdf
+/Plots/Discret/MPI-ESM-MR_rcp45/*.pdf
+
+/Plots/Discret/IPSL-CM5A-LR_rcp60/*.pdf
+/Plots/Discret/IPSL-CM5A-MR_rcp60/*.pdf
+/Plots/Discret/MIROC-ESM_rcp60/*.pdf
+/Plots/Discret/MIROC-ESM-CHEM_rcp60/*.pdf
+
+/Plots/Discret/ACCESS1-0_rcp85/*.pdf
+/Plots/Discret/ACCESS1-3_rcp85/*.pdf
+/Plots/Discret/IPSL-CM5A-LR_rcp85/*.pdf
+/Plots/Discret/IPSL-CM5A-MR_rcp85/*.pdf
+/Plots/Discret/IPSL-CM5B-LR_rcp85/*.pdf
+/Plots/Discret/MIROC-ESM_rcp85/*.pdf
+/Plots/Discret/MIROC-ESM-CHEM_rcp85/*.pdf
+/Plots/Discret/MPI-ESM-LR_rcp85/*.pdf
+/Plots/Discret/MPI-ESM-MR_rcp85/*.pdf
+/Plots/Discret/MRI-ESM1_rcp85/*.pdf

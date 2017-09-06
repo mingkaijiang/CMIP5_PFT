@@ -13,16 +13,6 @@ rm(list=ls(all=TRUE))
 source("R/prepare_R.R")
 
 
-
-Datfile = "landCoverFrac_Lmon_IPSL-CM5A-LR_rcp26_r1i1p1_200601-230012"
-sourceDir = "Data/Raw"
-destDir = "Data/Processed/IPSL-CM5A-LR_rcp26"
-
-
-
-
-
-
 #### ------------------------ Process raw nc files ------------------------ #####
 
 # RCP 26
@@ -119,6 +109,11 @@ nc_to_csv(Datfile = "landCoverFrac_Lmon_MPI-ESM-MR_rcp85_r1i1p1_200601-210012",
 nc_to_csv(Datfile = "landCoverFrac_Lmon_MRI-ESM1_rcp85_r1i1p1_200601-210012", 
           sourceDir = "Data/Raw", destDir = "Data/Processed/MRI-ESM1_rcp85")
 
+
+##### ------------------------ Plotting ---------------------------- #####
+# plot discret years
+Aus_Vegetation_Plot(sourceDir = "Data/Processed/MIROC-ESM_rcp26", 
+                    destDir = "Plots/Discret/MIROC-ESM_rcp26")
 
 
 
