@@ -16,6 +16,8 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
     tmp.array <- ncvar_get(ncDF)
     d <- dim(tmp.array)
     
+    pft <- ncvar_get(ncDF, "type_description")
+    
     lon <- ncvar_get(ncDF, "lon")
     nlon <- dim(lon)
     #head(lon)
@@ -66,7 +68,7 @@ nc_to_csv <- function(Datfile, sourceDir, destDir) {
     for (j in 1:d[3]) {
         
         # prepare outfile name and directory
-        outFile <- paste0(destDir, "/", Datfile, "_", j, ".csv")
+        outFile <- paste0(destDir, "/", Datfile, "_", j, "_", pft[j], ".csv")
         
         ##Jan list
         i <- 1

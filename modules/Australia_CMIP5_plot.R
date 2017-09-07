@@ -27,6 +27,8 @@ Aus_Vegetation_Plot <- function(sourceDir, destDir) {
         rg.min <- min(rg)
         
         
+        
+        
         # plotting
         pdf(outName)
         
@@ -38,8 +40,11 @@ Aus_Vegetation_Plot <- function(sourceDir, destDir) {
         
         # p1
         with(p1, quilt.plot(lon, lat, jan, xlim=c(110, 160), ylim=c(-50, -9),
+                            add.legend=F,
                             nx = 10, ny = 10, main = "Year 2006 01"))
         world(add=T, col=adjustcolor("grey", 0.8))
+        legend("right", legend = col.lab, title = "% grid",
+               fill=tim.colors(12), cex=1, bty="n")
         
         # p2
         with(p2, quilt.plot(lon, lat, jan, xlim=c(110, 160), ylim=c(-50, -9),
