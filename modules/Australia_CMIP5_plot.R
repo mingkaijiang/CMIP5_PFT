@@ -1,6 +1,6 @@
 ####################################################################################
 # Plot Australia vegetation maps from CMIP5 datasets
-Aus_Vegetation_Plot <- function(sourceDir, destDir) {
+Aus_Vegetation_Plot_Discret <- function(sourceDir, destDir) {
     
     dir.create(destDir, showWarnings = FALSE)
     DatFiles <- list.files(path = sourceDir, pattern = "\\.csv")
@@ -22,12 +22,7 @@ Aus_Vegetation_Plot <- function(sourceDir, destDir) {
         outName <- paste0(destDir, "/", oName)
         
         # color range
-        rg <- cbind(p1$jan, p2$jan, p3$jan, p4$jan)
-        rg.max <- max(rg)
-        rg.min <- min(rg)
-        
-        
-        
+        rg <- seq(0, 100, by=10)
         
         # plotting
         pdf(outName)
@@ -40,24 +35,26 @@ Aus_Vegetation_Plot <- function(sourceDir, destDir) {
         
         # p1
         with(p1, quilt.plot(lon, lat, jan, xlim=c(110, 160), ylim=c(-50, -9),
-                            add.legend=F,
+                            add.legend=T, breaks=rg, col=rev(topo.colors(10)),
                             nx = 10, ny = 10, main = "Year 2006 01"))
         world(add=T, col=adjustcolor("grey", 0.8))
-        legend("right", legend = col.lab, title = "% grid",
-               fill=tim.colors(12), cex=1, bty="n")
+
         
         # p2
         with(p2, quilt.plot(lon, lat, jan, xlim=c(110, 160), ylim=c(-50, -9),
+                            add.legend=T, breaks=rg, col=rev(topo.colors(10)),
                             nx = 10, ny = 10, main = "Year 2036 01"))
         world(add=T, col=adjustcolor("grey", 0.8))
         
         # p3
         with(p3, quilt.plot(lon, lat, jan, xlim=c(110, 160), ylim=c(-50, -9),
+                            add.legend=T, breaks=rg, col=rev(topo.colors(10)),
                             nx = 10, ny = 10, main = "Year 2066 01"))
         world(add=T, col=adjustcolor("grey", 0.8))
         
         # p4
         with(p4, quilt.plot(lon, lat, jan, xlim=c(110, 160), ylim=c(-50, -9),
+                            add.legend=T, breaks=rg, col=rev(topo.colors(10)),
                             nx = 10, ny = 10, main = "Year 2096 01"))
         world(add=T, col=adjustcolor("grey", 0.8))
         

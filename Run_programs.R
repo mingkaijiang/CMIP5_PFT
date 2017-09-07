@@ -112,8 +112,8 @@ nc_to_csv(Datfile = "landCoverFrac_Lmon_MRI-ESM1_rcp85_r1i1p1_200601-210012",
 
 ##### ------------------------ Plotting ---------------------------- #####
 # plot discret years
-Aus_Vegetation_Plot(sourceDir = "Data/Processed/MIROC-ESM_rcp26", 
-                    destDir = "Plots/Discret/MIROC-ESM_rcp26")
+Aus_Vegetation_Plot_Discret(sourceDir = "Data/Processed/MIROC-ESM_rcp26", 
+                            destDir = "Plots/Discret/MIROC-ESM_rcp26")
 
 sourceDir <- "~/Documents/Research/Projects/Oz_vegetation_model/Github/Data/Processed/MIROC-ESM_rcp26"
 destDir <- "~/Documents/Research/Projects/Oz_vegetation_model/Github/Plots/Discret/MIROC-ESM_rcp26"
