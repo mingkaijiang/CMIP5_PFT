@@ -14,9 +14,7 @@ source("R/prepare_R.R")
 
 #### ------------------------ Process raw nc files ------------------------ #####
 
-system("mkdir Data/Processed")
-
-
+dir.create("Data/Processed", showWarnings = FALSE)
 # RCP 26
 nc_to_csv(Datfile = "landCoverFrac_Lmon_MIROC-ESM_rcp26_r1i1p1_200601-210012", 
           sourceDir = "Data/Raw", destDir = "Data/Processed/MIROC-ESM_rcp26")
@@ -115,12 +113,13 @@ nc_to_csv(Datfile = "landCoverFrac_Lmon_MRI-ESM1_rcp85_r1i1p1_200601-210012",
 
 ##### ------------------------ Plotting ---------------------------- #####
 ### plot discret years to test
-system("mkdir Plots/Discret")
+dir.create("Plots/Discret", showWarnings = FALSE)
 Aus_Vegetation_Plot_Discret(sourceDir = "Data/Processed/MIROC-ESM_rcp26", 
                             destDir = "Plots/Discret/MIROC-ESM_rcp26")
 
 ### plot continuous year plots within the same pdf file
-system("mkdir Plots/Continuous")
+dir.create("Plots/Continuous", showWarnings = FALSE)
+
 ## RCP 26
 Aus_Vegetation_Plot_Continuous(sourceDir = "Data/Processed/MIROC-ESM_rcp26",
                                destDir = "Plots/Continuous/MIROC-ESM_rcp26")
@@ -214,9 +213,106 @@ Aus_Vegetation_Plot_Continuous(sourceDir = "Data/Processed/MPI-ESM-MR_rcp85",
 Aus_Vegetation_Plot_Continuous(sourceDir = "Data/Processed/MRI-ESM1_rcp85",
                                destDir = "Plots/Continuous/MRI-ESM1_rcp85")
 
+### plot continuous year plots within the same pdf file
+dir.create("Plots/Annual", showWarnings = FALSE)
+
+## RCP 26
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MIROC-ESM_rcp26",
+                               destDir = "Plots/Annual/MIROC-ESM_rcp26")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp26",
+                               destDir = "Plots/Annual/IPSL-CM5A-LR_rcp26")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp26",
+                               destDir = "Plots/Annual/IPSL-CM5A-MR_rcp26")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MIROC-ESM-CHEM_rcp26",
+                               destDir = "Plots/Annual/MIROC-ESM-CHEM_rcp26")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MPI-ESM-LR_rcp26",
+                               destDir = "Plots/Annual/MPI-ESM-LR_rcp26")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MPI-ESM-MR_rcp26",
+                               destDir = "Plots/Annual/MPI-ESM-MR_rcp26")
+
+## RCP 45
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/ACCESS1-0_rcp45",
+                               destDir = "Plots/Annual/ACCESS1-0_rcp45")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/ACCESS1-3_rcp45",
+                               destDir = "Plots/Annual/ACCESS1-3_rcp45")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp45",
+                               destDir = "Plots/Annual/IPSL-CM5A-LR_rcp45")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp45",
+                               destDir = "Plots/Annual/IPSL-CM5A-MR_rcp45")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/IPSL-CM5B-LR_rcp45",
+                               destDir = "Plots/Annual/IPSL-CM5B-LR_rcp45")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MIROC-ESM_rcp45",
+                               destDir = "Plots/Annual/MIROC-ESM_rcp45")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MIROC-ESM-CHEM_rcp45",
+                               destDir = "Plots/Annual/MIROC-ESM-CHEM_rcp45")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MPI-ESM-LR_rcp45",
+                               destDir = "Plots/Annual/MPI-ESM-LR_rcp45")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MPI-ESM-MR_rcp45",
+                               destDir = "Plots/Annual/MPI-ESM-MR_rcp45")
+
+
+## RCP 60
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp60",
+                               destDir = "Plots/Annual/IPSL-CM5A-LR_rcp60")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp60",
+                               destDir = "Plots/Annual/IPSL-CM5A-MR_rcp60")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MIROC-ESM_rcp60",
+                               destDir = "Plots/Annual/MIROC-ESM_rcp60")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MIROC-ESM-CHEM_rcp60",
+                               destDir = "Plots/Annual/MIROC-ESM-CHEM_rcp60")
+
+
+## RCP 85
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/ACCESS1-0_rcp85",
+                               destDir = "Plots/Annual/ACCESS1-0_rcp85")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/ACCESS1-3_rcp85",
+                               destDir = "Plots/Annual/ACCESS1-3_rcp85")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp85",
+                               destDir = "Plots/Annual/IPSL-CM5A-LR_rcp85")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp85",
+                               destDir = "Plots/Annual/IPSL-CM5A-MR_rcp85")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/IPSL-CM5B-LR_rcp85",
+                               destDir = "Plots/Annual/IPSL-CM5B-LR_rcp85")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MIROC-ESM_rcp85",
+                               destDir = "Plots/Annual/MIROC-ESM_rcp85")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MIROC-ESM-CHEM_rcp85",
+                               destDir = "Plots/Annual/MIROC-ESM-CHEM_rcp85")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MPI-ESM-LR_rcp85",
+                               destDir = "Plots/Annual/MPI-ESM-LR_rcp85")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MPI-ESM-MR_rcp85",
+                               destDir = "Plots/Annual/MPI-ESM-MR_rcp85")
+
+Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MRI-ESM1_rcp85",
+                               destDir = "Plots/Annual/MRI-ESM1_rcp85")
+
+
 
 ##### ------------------------ Animated plots ---------------------------- #####
-system("mkdir Plots/Animated")
+dir.create("Plots/Animated", showWarnings = FALSE)
 
 ## RCP 26
 animated_plot_command(sourceDir = "Plots/Continuous/MIROC-ESM_rcp26",
