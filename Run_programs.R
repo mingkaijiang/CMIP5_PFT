@@ -12,6 +12,10 @@ rm(list=ls(all=TRUE))
 ### read in all R packages
 source("R/prepare_R.R")
 
+Datfile = "landCoverFrac_Lmon_IPSL-CM5A-LR_rcp26_r1i1p1_200601-230012"
+sourceDir = "Data/Raw"
+destDir = "Data/Processed/IPSL-CM5A-LR_rcp26"
+
 
 #### ------------------------ Process raw nc files ------------------------ #####
 
@@ -61,7 +65,7 @@ nc_to_csv(Datfile = "landCoverFrac_Lmon_MIROC-ESM-CHEM_rcp45_r1i1p1_200601-21001
 nc_to_csv(Datfile = "landCoverFrac_Lmon_MPI-ESM-LR_rcp45_r1i1p1_200601-210012", 
           sourceDir = "Data/Raw", destDir = "Data/Processed/MPI-ESM-LR_rcp45")
 
-nc_to_csv(Datfile = "landCoverFrac_Lmon_MPI-ESM-MR_rcp45_r1i1p1_200601-210012.nc", 
+nc_to_csv(Datfile = "landCoverFrac_Lmon_MPI-ESM-MR_rcp45_r1i1p1_200601-210012", 
           sourceDir = "Data/Raw", destDir = "Data/Processed/MPI-ESM-MR_rcp45")
 
 # RCP 60
@@ -106,6 +110,7 @@ nc_to_csv(Datfile = "landCoverFrac_Lmon_MPI-ESM-LR_rcp85_r1i1p1_200601-210012",
 nc_to_csv(Datfile = "landCoverFrac_Lmon_MPI-ESM-MR_rcp85_r1i1p1_200601-210012", 
           sourceDir = "Data/Raw", destDir = "Data/Processed/MPI-ESM-MR_rcp85")
 
+# needs check
 nc_to_csv(Datfile = "landCoverFrac_Lmon_MRI-ESM1_rcp85_r1i1p1_200601-210012", 
           sourceDir = "Data/Raw", destDir = "Data/Processed/MRI-ESM1_rcp85")
 
