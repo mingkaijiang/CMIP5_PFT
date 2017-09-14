@@ -170,7 +170,8 @@ Aus_Vegetation_Plot_Continuous_Annual <- function(sourceDir, destDir) {
             # plotting
             quilt.plot(p1$lon, p1$lat, p1$yr_avg, xlim=c(110, 160), ylim=c(-50, -9),
                        add.legend=T, breaks=brks, col=col.list,
-                       nx = 10, ny = 10, main = tl)
+                       nx = 10, ny = 10, main = NA, bg="white")
+            legend("bottomleft", tl, cex = 2, bg="lightgrey")
             
             # add world map
             world(add=T, col=adjustcolor("grey", 0.8))
