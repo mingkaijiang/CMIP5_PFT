@@ -215,18 +215,6 @@ Aus_Vegetation_Plot_Continuous(sourceDir = "Data/Processed/MRI-ESM1_rcp85",
 ### plot continuous year plots within the same pdf file
 dir.create("Plots/Annual", showWarnings = FALSE)
 
-
-### Make sure everything is clear
-rm(list=ls(all=TRUE))
-
-### read in all R packages
-source("R/prepare_R.R")
-
-sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp26"
-
-destDir = "Plots/Annual/IPSL-CM5A-LR_rcp26"
-
-
 ## RCP 26
 Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MIROC-ESM_rcp26",
                                destDir = "Plots/Annual/MIROC-ESM_rcp26")

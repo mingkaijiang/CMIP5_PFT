@@ -144,10 +144,17 @@ Aus_Vegetation_Plot_Continuous_Annual <- function(sourceDir, destDir) {
         year.list <- unique(dd$year)
         
         # prepare monthly means
-        subDF <- dd[,5:16]
-        yr.data <- rowMeans(subDF)
-        dd$yr_avg <- yr.data
-        
+        if (dim(dd)[2] <= 5) {
+            subDF <- dd[, 5]
+            
+            yr.data <- subDF
+            dd$yr_avg <- yr.data
+        } else {
+            subDF <- dd[,5:16]
+            yr.data <- rowMeans(subDF)
+            dd$yr_avg <- yr.data
+        }
+
         # color range
         rg <- range(yr.data)
         
