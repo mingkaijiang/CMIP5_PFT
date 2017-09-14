@@ -150,19 +150,26 @@ Aus_Vegetation_Plot_Continuous_Annual <- function(sourceDir, destDir) {
         
         # color range
         rg <- range(yr.data)
-        brks <- seq(rg[1], rg[2], length.out = 11)
         
-        # breaks labels
-        t.n <- max(brks) - 10
-        
-        if (t.n < 0) {
-            brks.lab <- round_any(seq(rg[1], rg[2], length.out = 11), 0.1, ceiling)
+        if (rg[2] - rg[1] == 0) {
+            brks <- seq(0, 1, length.out = 11)
             
-        } else {
-            brks.lab <- round_any(seq(rg[1], rg[2], length.out = 11), 1, ceiling)
+            brks.lab <- brks
+            
+        }  else {
+            brks <- seq(rg[1], rg[2], length.out = 11)
+            
+            # breaks labels
+            t.n <- max(brks) - 10
+            
+            if (t.n < 0) {
+                brks.lab <- round_any(seq(rg[1], rg[2], length.out = 11), 0.1, ceiling)
+                
+            } else {
+                brks.lab <- round_any(seq(rg[1], rg[2], length.out = 11), 1, ceiling)
+            }
         }
         
-
         col.list <- rev(topo.colors(10))
         
         # plotting
