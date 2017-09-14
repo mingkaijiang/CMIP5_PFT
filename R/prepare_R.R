@@ -18,6 +18,9 @@ pacman::p_load(scatterplot3d,
                maptools,
                raster,
                spatstat,
+               sp,
+               raster,
+               rgdal,
                fields) # add other packages needed to this list
 
 

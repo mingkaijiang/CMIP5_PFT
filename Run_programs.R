@@ -106,9 +106,8 @@ nc_to_csv(Datfile = "landCoverFrac_Lmon_MPI-ESM-LR_rcp85_r1i1p1_200601-210012",
 nc_to_csv(Datfile = "landCoverFrac_Lmon_MPI-ESM-MR_rcp85_r1i1p1_200601-210012", 
           sourceDir = "Data/Raw", destDir = "Data/Processed/MPI-ESM-MR_rcp85")
 
-# needs check
-nc_to_csv(Datfile = "landCoverFrac_Lmon_MRI-ESM1_rcp85_r1i1p1_200601-210012", 
-          sourceDir = "Data/Raw", destDir = "Data/Processed/MRI-ESM1_rcp85")
+nc_to_csv_ACCESS(Datfile = "landCoverFrac_Lmon_MRI-ESM1_rcp85_r1i1p1_200601-210012", 
+                sourceDir = "Data/Raw", destDir = "Data/Processed/MRI-ESM1_rcp85")
 
 
 ##### ------------------------ Plotting ---------------------------- #####
@@ -215,6 +214,18 @@ Aus_Vegetation_Plot_Continuous(sourceDir = "Data/Processed/MRI-ESM1_rcp85",
 
 ### plot continuous year plots within the same pdf file
 dir.create("Plots/Annual", showWarnings = FALSE)
+
+
+### Make sure everything is clear
+rm(list=ls(all=TRUE))
+
+### read in all R packages
+source("R/prepare_R.R")
+
+sourceDir = "Data/Processed/MIROC-ESM_rcp26"
+
+destDir = "Plots/Annual/MIROC-ESM_rcp26"
+
 
 ## RCP 26
 Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MIROC-ESM_rcp26",

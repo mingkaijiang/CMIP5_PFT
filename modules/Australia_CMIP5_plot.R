@@ -152,6 +152,17 @@ Aus_Vegetation_Plot_Continuous_Annual <- function(sourceDir, destDir) {
         rg <- range(yr.data)
         brks <- seq(rg[1], rg[2], length.out = 11)
         
+        # breaks labels
+        t.n <- max(brks) - 10
+        
+        if (t.n < 0) {
+            brks.lab <- round_any(seq(rg[1], rg[2], length.out = 11), 0.1, ceiling)
+            
+        } else {
+            brks.lab <- round_any(seq(rg[1], rg[2], length.out = 11), 1, ceiling)
+        }
+        
+
         col.list <- rev(topo.colors(10))
         
         # plotting
@@ -164,13 +175,23 @@ Aus_Vegetation_Plot_Continuous_Annual <- function(sourceDir, destDir) {
         for (j in year.list) {
             # subsetting df for each year
             p1 <- subset(dd, year == j)
+            p1 <- data.frame(p1$lon, p1$lat, p1$yr_avg)
+            colnames(p1) <- c("lon", "lat", "yr_avg")
             
             tl <- paste0("Year ", j)
             
             # plotting
-            quilt.plot(p1$lon, p1$lat, p1$yr_avg, xlim=c(110, 160), ylim=c(-50, -9),
-                       add.legend=T, breaks=brks, col=col.list,
-                       nx = 10, ny = 10, main = NA, bg="white")
+            #quilt.plot(p1$lon, p1$lat, p1$yr_avg, xlim=c(110, 160), ylim=c(-50, -9),
+            #           add.legend=T, breaks=brks, col=col.list,
+            #           nx = 10, ny = 10, main = NA, bg="white")
+            #legend("bottomleft", tl, cex = 2, bg="lightgrey")
+            
+            coordinates(p1)=~lon+lat
+            gridded(p1) = TRUE
+            r <- raster(p1)
+            plot(r, xlim=c(110, 160), ylim=c(-50, -9),
+                 breaks=brks, col=col.list,
+                 main = NA, bg="white",lab.breaks=brks.lab)
             legend("bottomleft", tl, cex = 2, bg="lightgrey")
             
             # add world map
