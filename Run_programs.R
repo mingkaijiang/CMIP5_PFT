@@ -106,9 +106,6 @@ nc_to_csv(Datfile = "landCoverFrac_Lmon_MPI-ESM-LR_rcp85_r1i1p1_200601-210012",
 nc_to_csv(Datfile = "landCoverFrac_Lmon_MPI-ESM-MR_rcp85_r1i1p1_200601-210012", 
           sourceDir = "Data/Raw", destDir = "Data/Processed/MPI-ESM-MR_rcp85")
 
-nc_to_csv_ACCESS(Datfile = "landCoverFrac_Lmon_MRI-ESM1_rcp85_r1i1p1_200601-210012", 
-                sourceDir = "Data/Raw", destDir = "Data/Processed/MRI-ESM1_rcp85")
-
 
 ##### ------------------------ Plotting ---------------------------- #####
 ### plot discret years to test
@@ -209,9 +206,6 @@ Aus_Vegetation_Plot_Continuous(sourceDir = "Data/Processed/MPI-ESM-LR_rcp85",
 Aus_Vegetation_Plot_Continuous(sourceDir = "Data/Processed/MPI-ESM-MR_rcp85",
                                destDir = "Plots/Continuous/MPI-ESM-MR_rcp85")
 
-Aus_Vegetation_Plot_Continuous(sourceDir = "Data/Processed/MRI-ESM1_rcp85",
-                               destDir = "Plots/Continuous/MRI-ESM1_rcp85")
-
 ### plot continuous year plots within the same pdf file
 dir.create("Plots/Annual", showWarnings = FALSE)
 
@@ -304,10 +298,6 @@ Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MPI-ESM-LR_rcp
 
 Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MPI-ESM-MR_rcp85",
                                destDir = "Plots/Annual/MPI-ESM-MR_rcp85")
-
-Aus_Vegetation_Plot_Continuous_Annual(sourceDir = "Data/Processed/MRI-ESM1_rcp85",
-                               destDir = "Plots/Annual/MRI-ESM1_rcp85")
-
 
 
 ##### ------------------------ Animated plots ---------------------------- #####
@@ -403,9 +393,32 @@ animated_plot_command(sourceDir = "Plots/Annual/MPI-ESM-LR_rcp85",
 animated_plot_command(sourceDir = "Plots/Annual/MPI-ESM-MR_rcp85",
                                destDir = "Plots/Animated/MPI-ESM-MR_rcp85")
 
-animated_plot_command(sourceDir = "Plots/Annual/MRI-ESM1_rcp85",
-                               destDir = "Plots/Animated/MRI-ESM1_rcp85")
 
+##### ---------------- Update PFT types for IPSL models -------------------- #####
+
+## RCP 26
+IPSL_PFT_assignment(sourceDir = "Plots/Animated/IPSL-CM5A-LR_rcp26")
+
+IPSL_PFT_assignment(sourceDir = "Plots/Animated/IPSL-CM5A-MR_rcp26")
+
+## RCP 45
+IPSL_PFT_assignment(sourceDir = "Plots/Animated/IPSL-CM5A-LR_rcp45")
+
+IPSL_PFT_assignment(sourceDir = "Plots/Animated/IPSL-CM5A-MR_rcp45")
+
+IPSL_PFT_assignment(sourceDir = "Plots/Animated/IPSL-CM5B-LR_rcp45")
+
+## RCP 60
+IPSL_PFT_assignment(sourceDir = "Plots/Animated/IPSL-CM5A-LR_rcp60")
+
+IPSL_PFT_assignment(sourceDir = "Plots/Animated/IPSL-CM5A-MR_rcp60")
+
+## RCP 85
+IPSL_PFT_assignment(sourceDir = "Plots/Animated/IPSL-CM5A-LR_rcp85")
+
+IPSL_PFT_assignment(sourceDir = "Plots/Animated/IPSL-CM5A-MR_rcp85")
+
+IPSL_PFT_assignment(sourceDir = "Plots/Animated/IPSL-CM5B-LR_rcp85")
 
 
 ##### ------------------------ Clear workspace ---------------------------- #####

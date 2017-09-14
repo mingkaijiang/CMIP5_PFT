@@ -139,6 +139,7 @@ Aus_Vegetation_Plot_Continuous_Annual <- function(sourceDir, destDir) {
         
         oName <- gsub(".csv", ".pdf", DatFiles[i])
         outName <- paste0(destDir, "/", oName)
+        outName <- gsub(" ", "", outName, fixed = TRUE)
         
         # plot all year avg for each pft
         year.list <- unique(dd$year)
