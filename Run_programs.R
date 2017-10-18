@@ -421,6 +421,20 @@ IPSL_PFT_assignment(sourceDir = "Plots/Animated/IPSL-CM5A-MR_rcp85")
 IPSL_PFT_assignment(sourceDir = "Plots/Animated/IPSL-CM5B-LR_rcp85")
 
 
+##### ---------------- Obtain % of dominant vegetation for each grid -------------------- #####
+#### To compute, for each model and scenario, a map of the dominant PFT and its percentage changes at decadal scale
+
+### plot continuous year plots within the same pdf file
+dir.create("Plots/Dominate", showWarnings = FALSE)
+
+## RCP 26
+Dominate_PFT_plot(sourceDir = "Data/Processed/MIROC-ESM_rcp26",
+                  destDir = "Plots/Dominate/MIROC-ESM_rcp26")
+
+sourceDir = "Data/Processed/MIROC-ESM_rcp26"
+destDir = "Plots/Dominate/MIROC-ESM_rcp26"
+
+
 ##### ------------------------ Clear workspace ---------------------------- #####
 rm(list=ls(all=TRUE))
 
