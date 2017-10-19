@@ -23,7 +23,9 @@ Dominate_PFT_plot <- function(sourceDir, destDir) {
         mydat <- read.csv(inNames[i])
         mydat$avg <- rowMeans(mydat[,5:16])
         
+        #my.list[[i]] <- mydat[,c("CMIP_Site", "lon", "lat", "year", "avg")]
         my.list[[i]] <- mydat[,c("CMIP_Site", "avg")]
+        
     }
     
     # combine the columns
@@ -34,6 +36,10 @@ Dominate_PFT_plot <- function(sourceDir, destDir) {
     # get the PFT names
     nam.list <- gsub(".*210012_", "", DatFiles)
     nam.list <- gsub(".csv", "", nam.list)
+    nam.order <- gsub("_.*", "", nam.list)
+    namDF <- data.frame(nam.order, nam.list)
+    namDF$nam.order <- as.numeric(as.character(namDF$nam.order))
+    namDF <- namDF[order(namDF$nam.order),]
     
     # generate pencent dataframe
     pcDF <- myDF[,l2]
@@ -59,15 +65,20 @@ Dominate_PFT_plot <- function(sourceDir, destDir) {
     year.list <- unique(maxpftDF$year)
     
     col.list <- rainbow(l+1)
-    brks.lab <- nam.list
+    brks.lab <- namDF$nam.list
     brks <- j
-    my.palette <- brewer.pal(n = l, name = "Set3")
     
+    lab.at1 <- c(0.5, c(1:(length(brks)-1)+0.5))
+    my.at1 <- c(0.5, brks+0.5)
+    myColorkey1 <- list(at=my.at1, labels=list(at=my.at1, labels = brks.lab))
+    myColorkey1 <- list(at=my.at1, labels=brks.lab)
     
-    cols0 <- brewer.pal(n=length(brks), name="Set3")
-    cols1 <- colorRampPalette(cols0, space="rgb")(length(brks))
+    #lab.at1 <- brks + 0.5
+    #lab.at1 <- c(0.5, lab.at1)
+    #myColorkey1 <- list(at=lab.at1, labels=brks.lab)
     
-    
+    my.at2 <- seq(0, 100, by = 10)
+    myColorkey2 <- list(at=my.at2, labels=list(at=my.at2)) 
     
         # plotting
         pdf(outName)
@@ -83,11 +94,10 @@ Dominate_PFT_plot <- function(sourceDir, destDir) {
             gridded(p1) = TRUE
             r <- raster(p1)
             
-            my.at <- c(brks, brks[length(brks)]+1)
-            lab.at <- brks + 0.5
-            myColorkey <- list(at=my.at, labels=list(at=lab.at, labels = brks.lab)) 
-            plot1 <- levelplot(r, at=brks, colorkey=myColorkey,par.settings=RdBuTheme(), 
+            plot1 <- levelplot(r, at=my.at1, colorkey=myColorkey1,par.settings=RdBuTheme(), 
                                margin=F,main=tl)
+            
+            plot1
             
             # plotting percent coverage
             # plotting dominant pft
@@ -100,9 +110,7 @@ Dominate_PFT_plot <- function(sourceDir, destDir) {
             gridded(p2) = TRUE
             r <- raster(p2)
             
-            my.at <- seq(0, 100, by = 10)
-            myColorkey <- list(at=my.at, labels=list(at=my.at)) 
-            plot2 <- levelplot(r, at=my.at, colorkey=myColorkey,par.settings=RdBuTheme(), 
+            plot2 <- levelplot(r, at=my.at2, colorkey=myColorkey,par.settings=RdBuTheme(), 
                                margin=F,main=tl)
 
             grid.arrange(plot1,plot2, ncol=1)
