@@ -210,3 +210,5 @@ vignettes/*.pdf
 /Plots/Animated/MPI-ESM-LR_rcp85/*.gif
 /Plots/Animated/MPI-ESM-MR_rcp85/*.gif
 /Plots/Animated/MRI-ESM1_rcp85/*.gif
+*.gif
+*.pdf

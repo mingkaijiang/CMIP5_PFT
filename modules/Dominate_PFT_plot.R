@@ -8,6 +8,9 @@ Dominate_PFT_plot <- function(sourceDir, destDir) {
     DatFiles <- list.files(path = sourceDir, pattern = "\\.csv")
     inNames <- file.path(sourceDir, DatFiles, fsep = .Platform$file.sep)
     
+    model.name <- gsub(".*Processed/", "", sourceDir)
+    outName <- paste0(destDir, "/", model.name, ".pdf")
+    
     l <- length(inNames)
     j <- c(1:l)
     
@@ -41,68 +44,72 @@ Dominate_PFT_plot <- function(sourceDir, destDir) {
     # combine dfs to generate PFT per grid
     pftDF <- cbind(gridDF, pcDF)
     
+    # trying to generate
+    # 1: DF with dominant species information
+    # 2. DF with percent coverage of dominant species
+    
+    colmax <- colnames(pcDF)[apply(pcDF,1,which.max)]
+    maxpftDF <- cbind(gridDF, colmax)
+    maxpc <- apply(pcDF, 1, max)
+    maxpftDF$percent <- maxpc
+    names(maxpftDF) <- c("CMIP_Site", "lon", "lat", "year", "PFT", "percent")
+    maxpftDF$pft_factor <- as.numeric(gsub("_.*", "", maxpftDF$PFT))
+    
+    # generate year list
+    year.list <- unique(maxpftDF$year)
+    
+    col.list <- rainbow(l+1)
+    brks.lab <- nam.list
+    brks <- j
+    my.palette <- brewer.pal(n = l, name = "Set3")
+    
+    
+    cols0 <- brewer.pal(n=length(brks), name="Set3")
+    cols1 <- colorRampPalette(cols0, space="rgb")(length(brks))
     
     
     
-    
-        
-        # color range
-        rg <- range(yr.data)
-        
-        if (rg[2] - rg[1] == 0) {
-            brks <- seq(0, 1, length.out = 11)
-            
-            brks.lab <- brks
-            
-        }  else {
-            brks <- seq(rg[1], rg[2], length.out = 11)
-            
-            # breaks labels
-            t.n <- max(brks) - 10
-            
-            if (t.n < 0) {
-                brks.lab <- round_any(seq(rg[1], rg[2], length.out = 11), 0.1, ceiling)
-                
-            } else {
-                brks.lab <- round_any(seq(rg[1], rg[2], length.out = 11), 1, ceiling)
-            }
-        }
-        
-        col.list <- rev(topo.colors(10))
-        
         # plotting
         pdf(outName)
         
-        par(oma=c(1,1,2,2),
-            mar=c(5,4,4,5),
-            mgp = c(3, 1, 0))  
-        
-        for (j in year.list) {
-            # subsetting df for each year
-            p1 <- subset(dd, year == j)
-            p1 <- data.frame(p1$lon, p1$lat, p1$yr_avg)
-            colnames(p1) <- c("lon", "lat", "yr_avg")
+        for (n in year.list) {
+            # plotting dominant pft
+            p1 <- subset(maxpftDF, year == n)
+            p1 <- data.frame(p1$lon, p1$lat, p1$pft_factor)
+            colnames(p1) <- c("lon", "lat", "PFT")
             
-            tl <- paste0("Year ", j)
-            
-            # plotting
-            #quilt.plot(p1$lon, p1$lat, p1$yr_avg, xlim=c(110, 160), ylim=c(-50, -9),
-            #           add.legend=T, breaks=brks, col=col.list,
-            #           nx = 10, ny = 10, main = NA, bg="white")
-            #legend("bottomleft", tl, cex = 2, bg="lightgrey")
-            
+            tl <- paste0("Year ", n)
             coordinates(p1)=~lon+lat
             gridded(p1) = TRUE
             r <- raster(p1)
-            plot(r, xlim=c(110, 160), ylim=c(-50, -9),
-                 breaks=brks, col=col.list,
-                 main = NA, bg="white",lab.breaks=brks.lab)
-            legend("bottomleft", tl, cex = 2, bg="lightgrey")
             
-            # add world map
-            world(add=T, col=adjustcolor("grey", 0.8))
+            my.at <- c(brks, brks[length(brks)]+1)
+            lab.at <- brks + 0.5
+            myColorkey <- list(at=my.at, labels=list(at=lab.at, labels = brks.lab)) 
+            plot1 <- levelplot(r, at=brks, colorkey=myColorkey,par.settings=RdBuTheme(), 
+                               margin=F,main=tl)
             
-        }   # j
+            # plotting percent coverage
+            # plotting dominant pft
+            p2 <- subset(maxpftDF, year == n)
+            p2 <- data.frame(p2$lon, p2$lat, p2$percent)
+            colnames(p2) <- c("lon", "lat", "percent")
+            
+            tl <- paste0("Year ", n)
+            coordinates(p2)=~lon+lat
+            gridded(p2) = TRUE
+            r <- raster(p2)
+            
+            my.at <- seq(0, 100, by = 10)
+            myColorkey <- list(at=my.at, labels=list(at=my.at)) 
+            plot2 <- levelplot(r, at=my.at, colorkey=myColorkey,par.settings=RdBuTheme(), 
+                               margin=F,main=tl)
+
+            grid.arrange(plot1,plot2, ncol=1)
+            
+            
+        }   
+        
         dev.off()
 
 }
