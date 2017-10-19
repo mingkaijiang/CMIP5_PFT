@@ -68,14 +68,9 @@ Dominate_PFT_plot <- function(sourceDir, destDir) {
     brks.lab <- namDF$nam.list
     brks <- j
     
-    lab.at1 <- c(0.5, c(1:(length(brks)-1)+0.5))
+    lab.at1 <- brks
     my.at1 <- c(0.5, brks+0.5)
-    myColorkey1 <- list(at=my.at1, labels=list(at=my.at1, labels = brks.lab))
-    myColorkey1 <- list(at=my.at1, labels=brks.lab)
-    
-    #lab.at1 <- brks + 0.5
-    #lab.at1 <- c(0.5, lab.at1)
-    #myColorkey1 <- list(at=lab.at1, labels=brks.lab)
+    myColorkey1 <- list(at=my.at1, labels=list(at=lab.at1, labels = brks.lab))
     
     my.at2 <- seq(0, 100, by = 10)
     myColorkey2 <- list(at=my.at2, labels=list(at=my.at2)) 
@@ -97,8 +92,6 @@ Dominate_PFT_plot <- function(sourceDir, destDir) {
             plot1 <- levelplot(r, at=my.at1, colorkey=myColorkey1,par.settings=RdBuTheme(), 
                                margin=F,main=tl)
             
-            plot1
-            
             # plotting percent coverage
             # plotting dominant pft
             p2 <- subset(maxpftDF, year == n)
@@ -110,7 +103,7 @@ Dominate_PFT_plot <- function(sourceDir, destDir) {
             gridded(p2) = TRUE
             r <- raster(p2)
             
-            plot2 <- levelplot(r, at=my.at2, colorkey=myColorkey,par.settings=RdBuTheme(), 
+            plot2 <- levelplot(r, at=my.at2, colorkey=myColorkey2,par.settings=RdBuTheme(), 
                                margin=F,main=tl)
 
             grid.arrange(plot1,plot2, ncol=1)
