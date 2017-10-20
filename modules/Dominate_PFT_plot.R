@@ -35,6 +35,8 @@ Dominate_PFT_plot <- function(sourceDir, destDir) {
     
     # get the PFT names
     nam.list <- gsub(".*210012_", "", DatFiles)
+    nam.list <- gsub(".*230012_", "", nam.list)
+    
     nam.list <- gsub(".csv", "", nam.list)
     nam.order <- gsub("_.*", "", nam.list)
     namDF <- data.frame(nam.order, nam.list)
@@ -84,6 +86,8 @@ Dominate_PFT_plot <- function(sourceDir, destDir) {
             p1 <- data.frame(p1$lon, p1$lat, p1$pft_factor)
             colnames(p1) <- c("lon", "lat", "PFT")
             
+            #r <- rasterFromXYZ(p1)
+
             tl <- paste0("Year ", n)
             coordinates(p1)=~lon+lat
             gridded(p1) = TRUE

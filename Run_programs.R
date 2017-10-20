@@ -431,22 +431,18 @@ dir.create("Plots/Dominate", showWarnings = FALSE)
 Dominate_PFT_plot(sourceDir = "Data/Processed/MIROC-ESM_rcp26",
                   destDir = "Plots/Dominate/MIROC-ESM_rcp26")
 
-# error
 Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp26",
                                destDir = "Plots/Dominate/IPSL-CM5A-LR_rcp26")
 
-# warnings
 Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp26",
                                destDir = "Plots/Dominate/IPSL-CM5A-MR_rcp26")
 
 Dominate_PFT_plot(sourceDir = "Data/Processed/MIROC-ESM-CHEM_rcp26",
                                destDir = "Plots/Dominate/MIROC-ESM-CHEM_rcp26")
 
-# warnings
 Dominate_PFT_plot(sourceDir = "Data/Processed/MPI-ESM-LR_rcp26",
                                destDir = "Plots/Dominate/MPI-ESM-LR_rcp26")
 
-# warnings
 Dominate_PFT_plot(sourceDir = "Data/Processed/MPI-ESM-MR_rcp26",
                                destDir = "Plots/Dominate/MPI-ESM-MR_rcp26")
 
@@ -459,15 +455,12 @@ Dominate_PFT_plot(sourceDir = "Data/Processed/ACCESS1-0_rcp45",
 Dominate_PFT_plot(sourceDir = "Data/Processed/ACCESS1-3_rcp45",
                                destDir = "Plots/Dominate/ACCESS1-3_rcp45")
 
-# error
 Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp45",
                                destDir = "Plots/Dominate/IPSL-CM5A-LR_rcp45")
 
-# warnings
 Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp45",
                                destDir = "Plots/Dominate/IPSL-CM5A-MR_rcp45")
 
-# warnings
 Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5B-LR_rcp45",
                                destDir = "Plots/Dominate/IPSL-CM5B-LR_rcp45")
 
@@ -477,11 +470,9 @@ Dominate_PFT_plot(sourceDir = "Data/Processed/MIROC-ESM_rcp45",
 Dominate_PFT_plot(sourceDir = "Data/Processed/MIROC-ESM-CHEM_rcp45",
                                destDir = "Plots/Dominate/MIROC-ESM-CHEM_rcp45")
 
-# warnings
 Dominate_PFT_plot(sourceDir = "Data/Processed/MPI-ESM-LR_rcp45",
                                destDir = "Plots/Dominate/MPI-ESM-LR_rcp45")
 
-# warnings
 Dominate_PFT_plot(sourceDir = "Data/Processed/MPI-ESM-MR_rcp45",
                                destDir = "Plots/Dominate/MPI-ESM-MR_rcp45")
 

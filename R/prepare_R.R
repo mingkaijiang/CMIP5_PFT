@@ -23,7 +23,8 @@ pacman::p_load(scatterplot3d,
                rgdal,
                fields,
                RColorBrewer,
-               gridExtra) # add other packages needed to this list
+               gridExtra,
+               rasterVis) # add other packages needed to this list
 
 
 #### Sourcing all R files in the function subdirectory
