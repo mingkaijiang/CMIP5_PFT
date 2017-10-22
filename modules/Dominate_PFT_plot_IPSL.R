@@ -112,7 +112,10 @@ Dominate_PFT_plot_IPSL <- function(sourceDir, destDir) {
             gridded(p1) = TRUE
             r <- raster(p1)
             
-            plot1 <- levelplot(r, at=my.at1, colorkey=myColorkey1,par.settings=RdBuTheme(), 
+            plot1 <- levelplot(r, at=my.at1, colorkey=myColorkey1,
+                               par.settings=custom.theme(symbol=brewer.pal(12, "Paired"),
+                                                         fill=brewer.pal(12, "Paired"),
+                                                         region = brewer.pal(12, "Paired")), 
                                margin=F,main=tl)
             
             # plotting percent coverage
