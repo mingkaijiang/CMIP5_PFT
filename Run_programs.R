@@ -431,10 +431,10 @@ dir.create("Plots/Dominate", showWarnings = FALSE)
 Dominate_PFT_plot(sourceDir = "Data/Processed/MIROC-ESM_rcp26",
                   destDir = "Plots/Dominate/MIROC-ESM_rcp26")
 
-Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp26",
+Dominate_PFT_plot_IPSL(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp26",
                                destDir = "Plots/Dominate/IPSL-CM5A-LR_rcp26")
 
-Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp26",
+Dominate_PFT_plot_IPSL(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp26",
                                destDir = "Plots/Dominate/IPSL-CM5A-MR_rcp26")
 
 Dominate_PFT_plot(sourceDir = "Data/Processed/MIROC-ESM-CHEM_rcp26",
@@ -453,13 +453,13 @@ Dominate_PFT_plot_ACCESS(sourceDir = "Data/Processed/ACCESS1-0_rcp45",
 Dominate_PFT_plot_ACCESS(sourceDir = "Data/Processed/ACCESS1-3_rcp45",
                                destDir = "Plots/Dominate/ACCESS1-3_rcp45")
 
-Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp45",
+Dominate_PFT_plot_IPSL(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp45",
                                destDir = "Plots/Dominate/IPSL-CM5A-LR_rcp45")
 
-Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp45",
+Dominate_PFT_plot_IPSL(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp45",
                                destDir = "Plots/Dominate/IPSL-CM5A-MR_rcp45")
 
-Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5B-LR_rcp45",
+Dominate_PFT_plot_IPSL(sourceDir = "Data/Processed/IPSL-CM5B-LR_rcp45",
                                destDir = "Plots/Dominate/IPSL-CM5B-LR_rcp45")
 
 Dominate_PFT_plot(sourceDir = "Data/Processed/MIROC-ESM_rcp45",
@@ -476,10 +476,10 @@ Dominate_PFT_plot(sourceDir = "Data/Processed/MPI-ESM-MR_rcp45",
 
 
 ## RCP 60
-Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp60",
+Dominate_PFT_plot_IPSL(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp60",
                                destDir = "Plots/Dominate/IPSL-CM5A-LR_rcp60")
 
-Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp60",
+Dominate_PFT_plot_IPSL(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp60",
                                destDir = "Plots/Dominate/IPSL-CM5A-MR_rcp60")
 
 Dominate_PFT_plot(sourceDir = "Data/Processed/MIROC-ESM_rcp60",
@@ -496,13 +496,13 @@ Dominate_PFT_plot_ACCESS(sourceDir = "Data/Processed/ACCESS1-0_rcp85",
 Dominate_PFT_plot_ACCESS(sourceDir = "Data/Processed/ACCESS1-3_rcp85",
                                destDir = "Plots/Dominate/ACCESS1-3_rcp85")
 
-Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp85",
+Dominate_PFT_plot_IPSL(sourceDir = "Data/Processed/IPSL-CM5A-LR_rcp85",
                                destDir = "Plots/Dominate/IPSL-CM5A-LR_rcp85")
 
-Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp85",
+Dominate_PFT_plot_IPSL(sourceDir = "Data/Processed/IPSL-CM5A-MR_rcp85",
                                destDir = "Plots/Dominate/IPSL-CM5A-MR_rcp85")
 
-Dominate_PFT_plot(sourceDir = "Data/Processed/IPSL-CM5B-LR_rcp85",
+Dominate_PFT_plot_IPSL(sourceDir = "Data/Processed/IPSL-CM5B-LR_rcp85",
                                destDir = "Plots/Dominate/IPSL-CM5B-LR_rcp85")
 
 Dominate_PFT_plot(sourceDir = "Data/Processed/MIROC-ESM_rcp85",
