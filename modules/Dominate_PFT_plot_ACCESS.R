@@ -66,6 +66,9 @@ Dominate_PFT_plot_ACCESS <- function(sourceDir, destDir) {
     names(maxpftDF) <- c("CMIP_Site", "lon", "lat", "year", "PFT", "percent")
     maxpftDF$pft_factor <- as.numeric(gsub("_.*", "", maxpftDF$PFT))
     
+    # subset percent = 0
+    maxpftDF <- subset(maxpftDF, percent > 0)
+    
     # generate year list
     year.list <- unique(maxpftDF$year)
     
