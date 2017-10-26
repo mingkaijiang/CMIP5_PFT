@@ -518,15 +518,15 @@ Dominate_PFT_plot(sourceDir = "Data/Processed/MPI-ESM-MR_rcp85",
                                destDir = "Plots/Dominate/MPI-ESM-MR_rcp85")
 
 ##### ------------------------ Plot all models ---------------------------- #####
-#### to compute changes in PFT coverage over time
+#### to compute year 2100 dominant PFT and % coverages
 #### Pick some interesting scenarios, models and timeframes
-#### Current pick: timeframe: 2006 to 2100
-####               scenario: do all
-####               models: do all (except ACCESS)
+#### Current pick: timeframe: 2100
+####               scenario: RCP 8.5
+####               models: ACCESS1-3; IPSL-CM5A-MR; MIROC-ESM-CHEM, MPI-ESM-LR
 
-### RCP 26
-All_RCP26_plot(sourceDir = "Data/Processed",
-               destDir = "Plots/RCP26")
+### RCP 85
+All_RCP85_plot(sourceDir = "Data/Processed",
+               destDir = "Plots/RCP85")
 
 
 
