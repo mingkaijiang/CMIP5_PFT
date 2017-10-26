@@ -136,7 +136,7 @@ All_RCP85_plot <- function(sourceDir, destDir) {
 
 
     # plotting
-    pdf(outName, width = 24, height = 16)
+    pdf(outName, width = 24, height = 10)
     
     par(mar = c(5, 4, 4, 2))
     
