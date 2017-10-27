@@ -108,11 +108,11 @@ All_RCP85_plot <- function(sourceDir, destDir) {
     # 4 models
     acDF <- model.list[[1]]
     ipDF <- model.list[[2]]
-    ipDF <- subset(ipDF, year == 2100)
+    ipDF <- subset(ipDF, year == 2006)
     mrDF <- model.list[[3]]
-    mrDF <- subset(mrDF, year == 2100)
+    mrDF <- subset(mrDF, year == 2006)
     mxDF <- model.list[[4]]
-    mxDF <- subset(mxDF, year == 2100)
+    mxDF <- subset(mxDF, year == 2006)
     
     # create pft list for IPSL
     # reference: Lathiere et al., 2006, ACP, 6, 2129-2146, Figure 1
