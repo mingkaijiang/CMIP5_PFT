@@ -212,3 +212,6 @@ vignettes/*.pdf
 /Plots/Animated/MRI-ESM1_rcp85/*.gif
 *.gif
 *.pdf
+
+*.csv
+*.pdf
